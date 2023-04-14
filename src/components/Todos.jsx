@@ -6,7 +6,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 //using the useQueryClient and useMutation hooks we can update our data on the server and re-fetch if the update was successful
 
 export const Todos=()=> {
-    const {data,isLoading}=useQuery('myTodos',getTodos)
+    const {data,isLoading,status}=useQuery('myTodos',getTodos)
 
     const [newTodo,setNewTodo]=useState('')
 
@@ -53,7 +53,7 @@ export const Todos=()=> {
             </form>
 
         <ListGroup>
-            {data.data.map(item=>(
+            {status=='success' && data.data.map(item=>(
                 <ListGroup.Item key={item.id} className="d-flex justify-content-between">
                 <i className={item.status? "fa-solid fa-square-check text-success fa-2x":"fa-solid fa-square-check text-secondary fa-2x"} 
                     onClick={()=>mutationDone.mutate(item.id)}></i>
