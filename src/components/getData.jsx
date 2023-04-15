@@ -1,6 +1,7 @@
 import axios from "axios";
 //const url=""
-const url="https://todo-server-db4free.onrender.com"
+const url="https://todo-server-heroku.onrender.com"//ki lett cserélve a db4free szolgáltató a HEROKU-ra
+
 export const getTodos = async () => {
   const response = await axios.get(url+"/all");
   return await response;
